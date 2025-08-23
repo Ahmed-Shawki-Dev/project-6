@@ -1,12 +1,15 @@
+import { faker } from '@faker-js/faker'
 import { PrismaClient } from '@prisma/client'
-
 const prisma = new PrismaClient()
 
 async function main() {
-  await prisma.user.create({
-    data: {
-      email: 'ahmedshawki5986@gmail.com',
-    },
+  await prisma.todo.createMany({
+    data: Array.from({ length: 19 }, () => ({
+      title: faker.lorem.text(),
+      body: faker.lorem.paragraph(),
+      completed: true,
+      createdAt: faker.date.anytime(),
+    })),
   })
 }
 

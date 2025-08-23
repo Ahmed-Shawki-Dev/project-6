@@ -6,21 +6,13 @@ url = env("DATABASE_URL")
 generator client {
   provider = "prisma-client-js"
 }
-model User {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  email String
-  profileImg String?
-  createdAt DateTime @default(now())
-  todos Todo[]
-}
+
 model Todo {
   id     String   @id @db.ObjectId @map("_id") @default(auto())
   title  String
   body String?
   createdAt DateTime @default(now())
   completed Boolean @default(false)
-  authorId String @db.ObjectId 
-  author User @relation(fields: [authorId],references: [id])
 }
 
 

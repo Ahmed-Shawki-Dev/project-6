@@ -1,4 +1,6 @@
+export const dynamic = 'force-dynamic'
 import { PlusCircleIcon } from 'lucide-react'
+import { getTodosAction } from '../actions/todo.actions'
 import { Button } from '../components/ui/button'
 import {
   Dialog,
@@ -13,9 +15,16 @@ import {
 import { Input } from '../components/ui/input'
 import { Label } from '../components/ui/label'
 
-export default function Home() {
+export default async function Home() {
+  const todos = await getTodosAction()
+  console.log(todos)
   return (
     <>
+      <ul className='list-inside list-decimal space-y-5'>
+        {todos.map((todo) => (
+          <li key={todo.id}>{todo.title}</li>
+        ))}
+      </ul>
       <Dialog>
         <form>
           <DialogTrigger asChild>

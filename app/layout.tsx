@@ -1,18 +1,7 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import ToggleTheme from '../components/ToggleTheme'
 import { ThemeProvider } from '../providers/Theme-Provider'
 import './globals.css'
-import ToggleTheme from '../components/ToggleTheme'
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -26,14 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
           enableSystem
           disableTransitionOnChange
         >
-          <ToggleTheme/>
+          <ToggleTheme />
           {children}
         </ThemeProvider>
       </body>
