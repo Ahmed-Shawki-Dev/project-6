@@ -4,7 +4,7 @@ const prisma = new PrismaClient()
 
 async function main() {
   await prisma.todo.createMany({
-    data: Array.from({ length: 19 }, () => ({
+    data: Array.from({ length: 20 }, () => ({
       title: faker.lorem.text(),
       body: faker.lorem.paragraph(),
       completed: true,
