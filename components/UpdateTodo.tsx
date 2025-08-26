@@ -65,7 +65,7 @@ const UpdateTodo = ({ id, todo }: { id: string; todo: TTodo }) => {
         <DialogHeader>
           <DialogTitle>Update Todo</DialogTitle>
           <DialogDescription>
-            Make changes to your todos here. Click Update when you're done.
+            Make changes to your todos here. Click Update when you are done.
           </DialogDescription>
         </DialogHeader>
 

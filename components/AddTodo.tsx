@@ -56,7 +56,7 @@ const AddTodo = ({userId}:{userId:string|null}) => {
         <DialogHeader>
           <DialogTitle>Add A New Todo</DialogTitle>
           <DialogDescription>
-            Make changes to your todos here. Click save when you're done.
+            Make changes to your todos here. Click save when you are done.
           </DialogDescription>
         </DialogHeader>
 
