@@ -6,16 +6,24 @@ import { FormSchema } from '../validation'
 
 const prisma = new PrismaClient()
 
-export const getTodosAction = async () => {
-  return await prisma.todo.findMany()
+export const getTodosAction = async (userId: string | null) => {
+    if (!userId) {
+      return [] 
+    }
+  return await prisma.todo.findMany({
+    where: {
+      user_id: userId as string,
+    },
+  })
 }
 
-export const addTodosAction = async (data: z.infer<typeof FormSchema>) => {
+export const addTodosAction = async (data: z.infer<typeof FormSchema>, userId: string | null) => {
   await prisma.todo.create({
     data: {
       title: data.title,
       body: data.body,
       completed: data.complete,
+      user_id: userId as string,
     },
   })
   revalidatePath('/')

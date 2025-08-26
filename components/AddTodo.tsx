@@ -30,7 +30,7 @@ import { FormSchema } from '../validation'
 import { Label } from './ui/label'
 import { Switch } from './ui/switch'
 
-const AddTodo = () => {
+const AddTodo = ({userId}:{userId:string|null}) => {
   const [open, setOpen] = useState(false)
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -40,14 +40,14 @@ const AddTodo = () => {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log('Data submitted:', data)
-    await addTodosAction(data)
+    await addTodosAction(data, userId)
     setOpen(false)
     form.reset()
   }
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant='outline'>
+        <Button variant='default'>
           <Plus />
           Add Todo
         </Button>

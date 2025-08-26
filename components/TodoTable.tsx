@@ -33,21 +33,21 @@ const TodoTable = ({ todos }: { todos: TTodo[] }) => {
       </TableHeader>
       <TableBody>
         {todos.map((todo) => (
-          <TableRow key={todo.id}>
-            <TableCell className='font-medium'>{todo.id}</TableCell>
-            <TableCell className={todo.completed ? 'font-medium line-through' : 'font-medium'}>
-              {todo.title}
+          <TableRow key={todo?.id}>
+            <TableCell className='font-medium'>{todo?.id}</TableCell>
+            <TableCell className={todo?.completed ? 'font-medium line-through' : 'font-medium'}>
+              {todo?.title}
             </TableCell>
             <TableCell>
-              {todo.completed ? (
+              {todo?.completed ? (
                 <Badge>Completed</Badge>
               ) : (
                 <Badge variant={'secondary'}>Uncompleted</Badge>
               )}
             </TableCell>
             <TableCell className='text-right space-x-2'>
-              <UpdateTodo id={todo.id} todo={todo} />
-              <DeleteTodo id={todo.id} />
+              <UpdateTodo id={todo?.id} todo={todo} />
+              <DeleteTodo id={todo?.id} />
             </TableCell>
           </TableRow>
         ))}
